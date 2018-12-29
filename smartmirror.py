@@ -17,10 +17,14 @@ from contextlib import contextmanager
 LOCALE_LOCK = threading.Lock()
 
 ui_locale = '' # e.g. 'fr_FR' fro French, '' as default
-time_format = 12 # 12 or 24
+time_format = 24 # 12 or 24
 date_format = "%b %d, %Y" # check python doc for strftime() for options
 news_country_code = 'us'
-weather_api_token = '34660ee9e82f491350ed0d90ff65e9af71' # create account at https://darksky.net/dev/
+
+filename = 'key.txt' 
+fin=open(filename,'r')
+weather_api_token = fin.readline().rstrip()
+#weather_api_token = '' # create account at https://darksky.net/dev/
 weather_lang = 'nl' # see https://darksky.net/dev/docs/forecast for full list of language parameters values
 weather_unit = 'auto' # see https://darksky.net/dev/docs/forecast for full list of unit parameters values
 latitude = 52.700060 # Set this if IP location lookup does not work for you (must be a string)
