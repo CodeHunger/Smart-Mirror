@@ -18,7 +18,7 @@ LOCALE_LOCK = threading.Lock()
 
 ui_locale = '' # e.g. 'fr_FR' fro French, '' as default
 time_format = 24 # 12 or 24
-date_format = "%b %d, %Y" # check python doc for strftime() for options
+date_format = "week %W, %b %d, %Y" # check python doc for strftime() for options
 news_country_code = 'us'
 
 filename = 'key.txt' 
@@ -236,7 +236,7 @@ class News(Frame):
             feed = feedparser.parse(headlines_url)
 
             for post in feed.entries[0:5]:
-                headline = NewsHeadline(self.headlinesContainer, post.title)
+                headline = wNewsHeadline(self.headlinesContainer, post.title)
                 headline.pack(side=TOP, anchor=W)
         except Exception as e:
             traceback.print_exc()
